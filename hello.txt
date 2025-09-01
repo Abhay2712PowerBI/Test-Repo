@@ -3,3 +3,4 @@
 "Hello, this is our first session on Git"
 "Adding for Python Learning"
 "Hello Git World"
+"This is my second line"
