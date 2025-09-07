@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 "Hello Dit!"
 "This is my second line"
-=======
 "Hello, this is our first session on Git"
->>>>>>> f859f57 (First commit: Added hello.txt successfully)
-
+"Adding for Python Learning"
