@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 "Specific data for feature-branch"
+=======
+"Feature work"
+>>>>>>> ac486540d10a49d592c641344c1ffe9cf75e3a70
