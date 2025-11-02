@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+"Hello, this is our first session on Git"
+"Adding for Python Learning"
+=======
+"Hello Git World"
+"This is my second line"
+>>>>>>> ac486540d10a49d592c641344c1ffe9cf75e3a70
