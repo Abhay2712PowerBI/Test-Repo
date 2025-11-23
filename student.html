@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Info</title>
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; background:#f7f9fc; color:#222; padding:24px; }
+      .container { max-width:600px; margin:18px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(20,30,60,0.06); }
+      h1 { margin-top:0; font-size:1.4rem; }
+      label { display:block; margin-top:12px; font-weight:600; }
+      input[type="text"], input[type="number"] { width:100%; padding:8px 10px; margin-top:6px; border:1px solid #d6dbe7; border-radius:4px; }
+      .row { display:flex; gap:12px; }
+      .row > div { flex:1; }
+      button { margin-top:16px; padding:10px 14px; border:0; background:#2b76d6; color:#fff; border-radius:6px; cursor:pointer; }
+      .card { margin-top:18px; padding:12px; border-radius:6px; background:linear-gradient(180deg,#fbfdff,#f2f6ff); border:1px solid #e6eefc; }
+      .card p { margin:6px 0; }
+      .muted { color:#556; font-size:0.9rem; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Student Information</h1>
+      <p class="muted">Enter a student's details below and click <strong>Show</strong>.</p>
+
+      <label for="name">Name</label>
+      <input id="name" type="text" placeholder="e.g., Alex Johnson" />
+
+      <div class="row">
+        <div>
+          <label for="age">Age</label>
+          <input id="age" type="number" min="0" placeholder="e.g., 16" />
+        </div>
+        <div>
+          <label for="school">School</label>
+          <input id="school" type="text" placeholder="e.g., Lincoln High" />
+        </div>
+      </div>
+
+      <label for="location">Location</label>
+      <input id="location" type="text" placeholder="e.g., Springfield, IL" />
+
+      <button id="showBtn">Show</button>
+
+      <div id="display" class="card" aria-live="polite" style="display:none;">
+        <h2 style="margin:0 0 8px 0; font-size:1.1rem">Student</h2>
+        <p><strong>Name:</strong> <span id="d-name"></span></p>
+        <p><strong>Age:</strong> <span id="d-age"></span></p>
+        <p><strong>School:</strong> <span id="d-school"></span></p>
+        <p><strong>Location:</strong> <span id="d-location"></span></p>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('showBtn').addEventListener('click', function () {
+        const name = document.getElementById('name').value.trim();
+        const age = document.getElementById('age').value.trim();
+        const school = document.getElementById('school').value.trim();
+        const location = document.getElementById('location').value.trim();
+
+        if (!name && !age && !school && !location) {
+          alert('Please enter at least one field.');
+          return;
+        }
+
+        document.getElementById('d-name').textContent = name || '—';
+        document.getElementById('d-age').textContent = age || '—';
+        document.getElementById('d-school').textContent = school || '—';
+        document.getElementById('d-location').textContent = location || '—';
+
+        document.getElementById('display').style.display = 'block';
+      });
+    </script>
+  </body>
+</html>

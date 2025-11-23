@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Point Class Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .output {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TypeScript Point Class Execution</h1>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        class Point {
+            constructor(x = 0, y = 0) {
+                this.x = x;
+                this.y = y;
+            }
+            move(dx, dy) {
+                this.x += dx;
+                this.y += dy;
+            }
+        }
+
+        // Test the Point class
+        const output = document.getElementById('output');
+        
+        const point = new Point(5, 10);
+        output.innerHTML += `<div class="output">Initial position: (${point.x}, ${point.y})</div>`;
+
+        point.move(3, 4);
+        output.innerHTML += `<div class="output">After moving (3, 4): (${point.x}, ${point.y})</div>`;
+
+        point.move(-2, -5);
+        output.innerHTML += `<div class="output">After moving (-2, -5): (${point.x}, ${point.y})</div>`;
+
+        const point2 = new Point();
+        output.innerHTML += `<div class="output">New point with default values: (${point2.x}, ${point2.y})</div>`;
+
+        point2.move(10, 20);
+        output.innerHTML += `<div class="output">After moving (10, 20): (${point2.x}, ${point2.y})</div>`;
+    </script>
+</body>
+</html>

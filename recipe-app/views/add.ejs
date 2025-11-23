@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Recipe - RecipeShare</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">🍳 RecipeShare</a>
+                <ul class="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/add" class="btn-primary">+ Add Recipe</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="form-container">
+            <h1>Add New Recipe</h1>
+            <form method="POST" action="/recipes" class="recipe-form">
+                <div class="form-group">
+                    <label for="title">Recipe Title *</label>
+                    <input type="text" id="title" name="title" required placeholder="e.g., Chocolate Chip Cookies">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="author">Your Name *</label>
+                        <input type="text" id="author" name="author" required placeholder="Chef Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Dessert">Dessert</option>
+                            <option value="Appetizer">Appetizer</option>
+                            <option value="Snack">Snack</option>
+                            <option value="Beverage">Beverage</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prepTime">Prep Time *</label>
+                        <input type="text" id="prepTime" name="prepTime" required placeholder="e.g., 15 mins">
+                    </div>
+                    <div class="form-group">
+                        <label for="cookTime">Cook Time *</label>
+                        <input type="text" id="cookTime" name="cookTime" required placeholder="e.g., 30 mins">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="servings">Servings *</label>
+                        <input type="number" id="servings" name="servings" required min="1" placeholder="4">
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty *</label>
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="">Select Difficulty</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image URL (optional)</label>
+                    <input type="url" id="image" name="image" placeholder="https://example.com/image.jpg">
+                    <small>Paste a link to an image of your dish</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Tags (optional)</label>
+                    <input type="text" id="tags" name="tags" placeholder="e.g., vegetarian, spicy, quick">
+                    <small>Separate multiple tags with commas</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingredients">Ingredients * (one per line)</label>
+                    <textarea id="ingredients" name="ingredients" required rows="8" placeholder="2 cups flour&#10;1 cup sugar&#10;3 eggs&#10;..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="instructions">Instructions * (one step per line)</label>
+                    <textarea id="instructions" name="instructions" required rows="10" placeholder="Preheat oven to 350°F&#10;Mix dry ingredients&#10;Add wet ingredients&#10;..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <a href="/" class="btn-secondary">Cancel</a>
+                    <button type="submit" class="btn-submit">🎉 Publish Recipe</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 RecipeShare. Made with ❤️ for food lovers.</p>
+        </div>
+    </footer>
+</body>
+</html>

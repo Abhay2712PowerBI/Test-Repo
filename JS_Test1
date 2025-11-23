@@ -1,0 +1,16 @@
+// function calculate between two dates in days
+function calculateDaysBetweenDates(date1: string | number | Date, date2: string | number | Date) {
+    // Convert the input dates to Date objects
+    const d1 = new Date(date1);
+    const d2 = new Date(date2); 
+    // Calculate the difference in time
+    const timeDiff = Math.abs(d2.getTime() - d1.getTime());
+    // Convert time difference to days
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return daysDiff;
+}
+
+// Test the function
+console.log(calculateDaysBetweenDates("2023-01-01", "2023-01-31")); // 30
+console.log(calculateDaysBetweenDates("2022-05-15", "2022-06-15")); // 31
+console.log(calculateDaysBetweenDates("2020-02-01", "2020-03-01")); // 29

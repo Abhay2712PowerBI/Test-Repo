@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculator Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .input-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        input {
+            padding: 10px 15px;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 150px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .output {
+            background: #f0f4ff;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+        .error {
+            background: #ffe0e0;
+            border-left-color: #ff4444;
+            color: #cc0000;
+        }
+        .examples {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .examples h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧮 Factorial Calculator</h1>
+        
+        <div class="input-section">
+            <input type="number" id="numberInput" placeholder="Enter a number" value="5" min="0">
+            <button onclick="calculateNormal()">Calculate (Number)</button>
+            <button onclick="calculateBig()">Calculate (BigInt)</button>
+        </div>
+
+        <div id="output"></div>
+
+        <div class="examples">
+            <h3>Pre-calculated Examples:</h3>
+            <div id="examples"></div>
+        </div>
+    </div>
+
+    <script>
+        // factorial function for regular numbers
+        function factorial(n) {
+            if (!Number.isInteger(n)) throw new TypeError('n must be an integer');
+            if (n < 0) throw new RangeError('n must be >= 0');
+            let res = 1;
+            for (let i = 2; i <= n; i++) res *= i;
+            return res;
+        }
+
+        // factorial function for big integers
+        function factorialBig(n) {
+            if (!Number.isInteger(n)) throw new TypeError('n must be an integer');
+            if (n < 0) throw new RangeError('n must be >= 0');
+            let res = 1n;
+            for (let i = 2n; i <= BigInt(n); i++) res *= i;
+            return res;
+        }
+
+        function calculateNormal() {
+            const output = document.getElementById('output');
+            const input = document.getElementById('numberInput');
+            const n = parseInt(input.value, 10);
+            
+            try {
+                const result = factorial(n);
+                output.innerHTML = `<div class="output"><strong>factorial(${n}) =</strong> ${result}</div>`;
+            } catch (err) {
+                output.innerHTML = `<div class="output error"><strong>Error:</strong> ${err.message}</div>`;
+            }
+        }
+
+        function calculateBig() {
+            const output = document.getElementById('output');
+            const input = document.getElementById('numberInput');
+            const n = parseInt(input.value, 10);
+            
+            try {
+                const result = factorialBig(n);
+                output.innerHTML = `<div class="output"><strong>factorialBig(${n}) =</strong> ${result.toString()}</div>`;
+            } catch (err) {
+                output.innerHTML = `<div class="output error"><strong>Error:</strong> ${err.message}</div>`;
+            }
+        }
+
+        // Generate examples on page load
+        const examplesDiv = document.getElementById('examples');
+        const exampleNumbers = [0, 1, 5, 10, 15, 20];
+        
+        exampleNumbers.forEach(n => {
+            try {
+                const result = factorial(n);
+                examplesDiv.innerHTML += `<div class="output">factorial(${n}) = ${result}</div>`;
+            } catch (err) {
+                examplesDiv.innerHTML += `<div class="output error">factorial(${n}) = Error</div>`;
+            }
+        });
+
+        // Big number examples
+        examplesDiv.innerHTML += '<h3 style="margin-top: 20px; color: #667eea;">BigInt Examples (for larger numbers):</h3>';
+        const bigExamples = [50, 100];
+        
+        bigExamples.forEach(n => {
+            const result = factorialBig(n);
+            const resultStr = result.toString();
+            const preview = resultStr.length > 100 ? resultStr.substring(0, 100) + '... (' + resultStr.length + ' digits)' : resultStr;
+            examplesDiv.innerHTML += `<div class="output">factorialBig(${n}) = ${preview}</div>`;
+        });
+    </script>
+</body>
+</html>

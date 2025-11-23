@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Calculator Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .output {
+            background: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculate Days Between Dates</h1>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        // function calculate between two dates in days
+        function calculateDaysBetweenDates(date1, date2) {
+            // Convert the input dates to Date objects
+            const d1 = new Date(date1);
+            const d2 = new Date(date2); 
+            // Calculate the difference in time
+            const timeDiff = Math.abs(d2.getTime() - d1.getTime());
+            // Convert time difference to days
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            return daysDiff;
+        }
+
+        // Test the function
+        const output = document.getElementById('output');
+        
+        const tests = [
+            ["2023-01-01", "2023-01-31"],
+            ["2022-05-15", "2022-06-15"],
+            ["2020-02-01", "2020-03-01"],
+            ["2019-12-25", "2020-01-01"],
+            ["2021-07-04", "2021-07-14"],
+            ["2022-11-11", "2022-12-11"]
+        ];
+
+        tests.forEach(([date1, date2]) => {
+            const days = calculateDaysBetweenDates(date1, date2);
+            output.innerHTML += `<div class="output">Days between ${date1} and ${date2}: <strong>${days} days</strong></div>`;
+        });
+    </script>
+</body>
+</html>

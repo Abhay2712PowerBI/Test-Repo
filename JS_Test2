@@ -1,0 +1,38 @@
+// factorial.ts
+declare const require: any;
+declare const module: any;
+declare const process: any;
+
+export function factorial(n: number): number {
+    if (!Number.isInteger(n)) throw new TypeError('n must be an integer');
+    if (n < 0) throw new RangeError('n must be >= 0');
+    let res = 1;
+    for (let i = 2; i <= n; i++) res *= i;
+    return res;
+}
+
+export function factorialBig(n: number): bigint {
+    if (!Number.isInteger(n)) throw new TypeError('n must be an integer');
+    if (n < 0) throw new RangeError('n must be >= 0');
+    let res = 1n;
+    for (let i = 2n; i <= BigInt(n); i++) res *= i;
+    return res;
+}
+
+// Simple CLI: `ts-node factorial.ts 20` or `node dist/factorial.js 50 --big`
+if (require.main === module) {
+    const args = process.argv.slice(2);
+    if (args.length === 0) {
+        console.error('Usage: <n> [--big]');
+        process.exit(1);
+    }
+    const useBig = args.includes('--big');
+    const n = parseInt(args[0], 10);
+    try {
+        const result = useBig ? factorialBig(n) : factorial(n);
+        console.log(result.toString());
+    } catch (err) {
+        console.error(err instanceof Error ? err.message : String(err));
+        process.exit(1);
+    }
+}
