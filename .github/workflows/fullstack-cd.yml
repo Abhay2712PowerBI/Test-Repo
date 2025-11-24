@@ -1,0 +1,13 @@
+name: Fullstack CD (placeholder)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Placeholder deploy step
+        run: echo "Add your deploy steps here (SSH, cloud CLI, etc.)"

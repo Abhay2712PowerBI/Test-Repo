@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  server:
+    build: ./fullstack-app/server
+    working_dir: /usr/src/app
+    ports:
+      - "4000:4000"
+    # The Dockerfile isn't included in this scaffold. This is an example configuration.
+  client:
+    build: ./fullstack-app/client
+    ports:
+      - "5173:5173"
+    # For local dev it's often easier to run `npm run dev` in the client folder.
